@@ -1,0 +1,33 @@
+$state-prefix: 'is-';
+@mixin block($namespace, $element) {
+    .#{$namespace + $element} {
+        @content;
+    }
+}
+
+@mixin element($element) {
+    &#{$elementSeparator + $element} {
+        @content;
+    }
+}
+
+@mixin b($element) {
+    @include block($element) {
+        @content;
+    }
+}
+
+@mixin e($element) {
+    @include element($element) {
+        @content;
+    }
+}
+
+$device-list: 320px 360px 365px 375px 412px 414px 750px;
+@each $width in $device-list {
+    @media screen and (min-width: #{$width}) {
+        html {
+            font-size: ($width/750) * 100;
+        }
+    }
+}
